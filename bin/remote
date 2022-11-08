@@ -1,0 +1,6 @@
+#!/usr/bin/env php
+<?php
+
+unset($argv[0]);
+$command = implode(" ", $argv);
+echo shell_exec("docker container exec -it php $command");

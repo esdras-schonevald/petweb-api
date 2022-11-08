@@ -9,6 +9,9 @@ composer.phar
 # vscode
 .vscode
 
+# database
+.docker/db/
+
 # symfony/framework-bundle
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
