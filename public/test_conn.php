@@ -11,11 +11,11 @@ include dirname(__DIR__) . "/vendor/autoload.php";
 
 $conn = DriverManager::getConnection([
     "driver"    =>  $_ENV["POSTGRES_DRIVER"],
-    "host"      =>  $_ENV["POSTGRES_HOST"],
+    "host"      =>  $_ENV["POSTGRES_LOCAL_HOST"],
     "dbname"    =>  $_ENV["POSTGRES_DB"],
     "user"      =>  $_ENV["POSTGRES_USER"],
     "password"  =>  $_ENV["POSTGRES_PASSWORD"],
-    "port"      =>  $_ENV["POSTGRES_PORT"],
+    "port"      =>  $_ENV["POSTGRES_LOCAL_PORT"],
     "charset"   =>  $_ENV["POSTGRES_CHARSET"]
 ]);
 
