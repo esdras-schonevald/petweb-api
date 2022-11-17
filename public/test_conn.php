@@ -11,16 +11,16 @@ include dirname(__DIR__) . "/vendor/autoload.php";
 
 $conn = DriverManager::getConnection([
     "driver"    =>  $_ENV["POSTGRES_DRIVER"],
-    "host"      =>  $_ENV["POSTGRES_HOST"],
+    "host"      =>  $_ENV["POSTGRES_REMOTE_HOST"],
     "dbname"    =>  $_ENV["POSTGRES_DB"],
     "user"      =>  $_ENV["POSTGRES_USER"],
     "password"  =>  $_ENV["POSTGRES_PASSWORD"],
-    "port"      =>  $_ENV["POSTGRES_PORT"],
+    "port"      =>  $_ENV["POSTGRES_REMOTE_PORT"],
     "charset"   =>  $_ENV["POSTGRES_CHARSET"]
 ]);
 
 $conn->beginTransaction();
-
+/*
 $result = $conn->executeQuery(<<<SQL
     CREATE TABLE test (
         id SERIAL PRIMARY KEY,
@@ -35,8 +35,14 @@ SQL);
 $result = $conn->executeQuery(<<<SQL
     SELECT * FROM test
 SQL);
+*/
+
+$result = $conn->executeQuery(<<<SQL
+    SELECT * FROM dia_semana
+SQL);
 
 $assoc = $result->fetchAllAssociative();
 
-var_dump($assoc);
+header("Content-Type: Application/JSON");
+echo json_encode($assoc);
 $conn->rollBack();

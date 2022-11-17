@@ -18,11 +18,11 @@ return DependencyFactory::fromEntityManager(
     new ExistingEntityManager(
         EntityManager::create([
                 "driver"    =>  $_ENV["POSTGRES_DRIVER"],
-                "host"      =>  $_ENV["POSTGRES_HOST"],
+                "host"      =>  $_ENV["POSTGRES_REMOTE_HOST"],
                 "dbname"    =>  $_ENV["POSTGRES_DB"],
                 "user"      =>  $_ENV["POSTGRES_USER"],
                 "password"  =>  $_ENV["POSTGRES_PASSWORD"],
-                "port"      =>  $_ENV["POSTGRES_PORT"],
+                "port"      =>  $_ENV["POSTGRES_REMOTE_PORT"],
                 "charset"   =>  $_ENV["POSTGRES_CHARSET"]
             ],
             ORMSetup::createAnnotationMetadataConfiguration(
