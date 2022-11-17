@@ -3,11 +3,29 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Link;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\CartaoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource(mercure: true, uriTemplate: "cartoes")]
+#[ApiResource(
+    mercure: true,
+    uriTemplate: "cartoes/{id}",
+    operations: [
+        new GetCollection("cartoes"),
+        new Post("cartoes"),
+        new Get,
+        new Patch,
+        new Put,
+        new Delete
+    ]
+)]
 #[ORM\Entity(repositoryClass: CartaoRepository::class)]
 class Cartao
 {

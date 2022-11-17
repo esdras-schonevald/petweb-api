@@ -3,12 +3,27 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\GrupoUsuarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource(mercure: true, uriTemplate: "grupos_usuario")]
+#[ApiResource(mercure: true, routePrefix: "usuarios",
+    operations: [
+        new GetCollection("/grupos"),
+        new Post("/grupos"),
+        new Get("/grupos/{id}"),
+        new Put("/grupos/{id}"),
+        new Patch("/grupos/{id}"),
+        new Delete("/grupos/{id}")
+    ]
+)]
 #[ORM\Entity(repositoryClass: GrupoUsuarioRepository::class)]
 class GrupoUsuario
 {

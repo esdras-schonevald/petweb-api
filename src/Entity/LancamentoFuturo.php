@@ -7,7 +7,7 @@ use App\Repository\LancamentoFuturoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource(mercure: true, uriTemplate: "lancamentos_futuros")]
+#[ApiResource(mercure: true, uriTemplate: "lancamentos")]
 #[ORM\Entity(repositoryClass: LancamentoFuturoRepository::class)]
 class LancamentoFuturo
 {

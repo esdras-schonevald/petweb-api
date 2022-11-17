@@ -3,12 +3,28 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\FormaPagamentoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ApiResource(mercure: true, uriTemplate: "formas_pagamento")]
+#[ApiResource(
+    routePrefix: "pagamento",
+    operations: [
+        new GetCollection(uriTemplate: "/formas"),
+        new Get(uriTemplate: "/formas/{id}"),
+        new Post(uriTemplate: "/formas"),
+        new Put(uriTemplate: "/formas/{id}"),
+        new Delete(uriTemplate: "/formas/{id}")
+    ]
+)]
 #[ORM\Entity(repositoryClass: FormaPagamentoRepository::class)]
+#[Table(name: "forma_pagamento")]
 class FormaPagamento
 {
     #[ORM\Id]

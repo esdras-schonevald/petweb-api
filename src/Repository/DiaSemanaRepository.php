@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\DiaSemana;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * @extends ServiceEntityRepository<DiaSemana>

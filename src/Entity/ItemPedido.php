@@ -6,7 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ItemPedidoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource(mercure: true, uriTemplate: "itens_pedido")]
+#[ApiResource(mercure: true, uriTemplate: "pedido/{pedido}/itens")]
 #[ORM\Entity(repositoryClass: ItemPedidoRepository::class)]
 class ItemPedido
 {

@@ -4,11 +4,20 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use App\Controller\DiaSemanaController;
 use App\Repository\DiaSemanaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[Get(uriTemplate: "/dias_semana")]
+#[ApiResource(
+    operations:[
+        new GetCollection(uriTemplate: "/dias/semana"),
+        new Get(uriTemplate: "/dias/{id}/semana")
+    ]
+)]
 #[ORM\Entity(repositoryClass: DiaSemanaRepository::class)]
+#[Table(name: "dia_semana")]
 class DiaSemana
 {
     #[ORM\Id]
