@@ -12,6 +12,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      options: --user root
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -25,9 +28,8 @@ jobs:
 
     - name: Prepare SSH
       run: >
-        apt-get install sudo && \
-        sudo apt-get -yq update && \
-        sudo apt-get -yq install ssh
+        apt-get -yq update && \
+        apt-get -yq install ssh
         
     - name: Add IP to known hosts
       run: >
