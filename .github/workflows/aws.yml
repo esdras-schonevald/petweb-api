@@ -40,8 +40,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: CD
+      run: cd /var/www/petweb
+      
     - name: Down
-      run: cd /var/www/petweb && docker-compose down
+      run: docker-compose down
       
     - name: Copy
       uses: easingthemes/ssh-deploy@main
