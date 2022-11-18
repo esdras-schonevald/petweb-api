@@ -32,11 +32,7 @@ jobs:
     #    apt-get -yq install ssh
         
     - name: Add IP to known hosts
-      run: >
-        mkdir ~/.ssh && \
-        ssh-keyscan -H \"$IP\" >> ~/.ssh/known_hosts
-      env:
-        IP: ${{ secrets.IP }}
+      run: echo "${{ secrets.SSH_HOSTKEY }}" >> ~/.ssh/known_hosts
 
     - name: Deploy
       uses: easingthemes/ssh-deploy@main
