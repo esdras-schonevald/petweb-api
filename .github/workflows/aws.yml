@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -26,7 +26,10 @@ jobs:
     - name: Prepare SSH
       run: >
         sudo apt-get -yq update && \
-        sudo apt-get -yqq install ssh && \
+        sudo apt-get -yq install ssh
+        
+    - name: Add IP to known hosts
+      run: >
         cd ~ && sudo mkdir .ssh && \
         ssh-keyscan -H \"$IP\" >> ~/.ssh/known_hosts
       env:
