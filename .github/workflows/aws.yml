@@ -25,7 +25,7 @@ jobs:
 
     - name: Prepare SSH
       run: >
-        apt install sudo && \
+        apt-get install sudo && \
         sudo apt-get -yq update && \
         sudo apt-get -yq install ssh
         
