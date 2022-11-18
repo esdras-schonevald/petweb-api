@@ -5,13 +5,15 @@ on:
     branches: 
       - master
 
+permissions: write-all | read-all
+
 env:
   AWS_REGION: us-east-2                       # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: ec2-3-144-212-85            # set this to your Amazon ECR repository name
 
 jobs:
   build:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
       
     steps:
     - name: Checkout
