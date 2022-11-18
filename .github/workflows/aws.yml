@@ -34,14 +34,8 @@ jobs:
     - name: Add IP to known hosts
       run: mkdir ~/.ssh && echo "${{ secrets.SSH_HOSTKEY }}" >> ~/.ssh/known_hosts
 
-    - name: Deploy
-      run: >
-        rsync /home/runner/work/petweb-api/petweb-api/ \
-        ec2-user@ec2-3-144-212-85.us-east-2.compute.amazonaws.com:/var/www/petweb \
-        --rsh "ssh -p 22 -i /home/runner/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
-        --recursive
-        
-    #  uses: easingthemes/ssh-deploy@main
+    - name: Deploy  
+      uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
         ARGS: "-rltgoDzvO --delete"
