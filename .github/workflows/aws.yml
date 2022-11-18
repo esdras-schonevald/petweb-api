@@ -49,12 +49,12 @@ jobs:
     - name: Copy
       uses: easingthemes/ssh-deploy@main
       env:
-        ARGS: "-rltgoDzvO --delete"
+        ARGS: "-avzr --delete"
         SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-        SOURCE: .
-        REMOTE_HOST: ec2-3-144-212-85.us-east-2.compute.amazonaws.com
-        REMOTE_USER: ec2-user
-        TARGET: /var/www/petweb
+        SOURCE: "./"
+        REMOTE_HOST: "ec2-3-144-212-85.us-east-2.compute.amazonaws.com"
+        REMOTE_USER: "ec2-user"
+        TARGET: "/var/www/petweb"
     
     - name: Cache
       uses: actions/cache@v3.0.11
