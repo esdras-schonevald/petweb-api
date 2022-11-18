@@ -25,8 +25,9 @@ jobs:
 
     - name: Prepare SSH
       run: >
-        apt-get -yq update && \
-        apt-get -yq install ssh
+        apt install sudo && \
+        sudo apt-get -yq update && \
+        sudo apt-get -yq install ssh
         
     - name: Add IP to known hosts
       run: >
