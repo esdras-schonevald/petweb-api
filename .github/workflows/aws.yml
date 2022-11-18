@@ -26,14 +26,14 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Prepare SSH
-      run: >
-        su && apt-get -yq update && \
-        apt-get -yq install ssh
+    #- name: Prepare SSH
+    #  run: >
+    #    su && apt-get -yq update && \
+    #    apt-get -yq install ssh
         
     - name: Add IP to known hosts
       run: >
-        cd ~ && sudo mkdir .ssh && \
+        mkdir ~/.ssh && \
         ssh-keyscan -H \"$IP\" >> ~/.ssh/known_hosts
       env:
         IP: ${{ secrets.IP }}
