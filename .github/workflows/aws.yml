@@ -43,6 +43,9 @@ jobs:
     - name: Down
       run: docker-compose down -f /var/www/petweb/docker-compose.yml
       
+    - name: Use Su
+      run: sudo su
+      
     - name: Copy
       uses: easingthemes/ssh-deploy@main
       env:
