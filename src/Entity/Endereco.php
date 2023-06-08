@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\EnderecoRepository;
+use Petweb\Api\Repository\EnderecoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -38,7 +38,7 @@ class Endereco
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pais = null;
 
-    #[ORM\OneToMany(mappedBy: 'idEndereco', targetEntity: Pessoa::class)]
+    #[ORM\OneToMany(mappedBy: 'endereco', targetEntity: Pessoa::class)]
     private Collection $pessoas;
 
     public function __construct()

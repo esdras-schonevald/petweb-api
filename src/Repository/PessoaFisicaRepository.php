@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Repository;
+namespace Petweb\Api\Repository;
 
-use App\Entity\PessoaFisica;
+use Petweb\Api\Entity\PessoaFisica;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +40,36 @@ class PessoaFisicaRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return PessoaFisica[] Returns an array of PessoaFisica objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('pf')
+            ->select('pf.nome, p.telefone')
+            ->innerJoin(Pessoa::class, 'p', Expr\Join::WITH, 'p=pf.pessoa')
+            ->getQuery()
+            ->getResult();
+    }
+    //    /**
+    //     * @return PessoaFisica[] Returns an array of PessoaFisica objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('p.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?PessoaFisica
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?PessoaFisica
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

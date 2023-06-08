@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\ItemPedidoRepository;
+use Petweb\Api\Repository\ItemPedidoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ApiResource(mercure: true, uriTemplate: "pedido/{pedido}/itens")]

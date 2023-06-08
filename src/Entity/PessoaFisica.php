@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
@@ -9,20 +9,23 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
-use App\Entity\Pessoa;
-use App\Repository\PessoaFisicaRepository;
+use Petweb\Api\Entity\Pessoa;
+use Petweb\Api\Repository\PessoaFisicaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ApiResource(mercure: true, routePrefix: "pessoas",
+#[ApiResource(
+    mercure: true,
+    uriTemplate: '/pessoas_fisicas',
     operations: [
-        new GetCollection("/fisicas"),
-        new Post("/fisicas"),
-        new Get("/fisicas/{id}"),
-        new Put("/fisicas/{id}"),
-        new Patch("/fisicas/{id}"),
-        new Delete("/fisicas/{id}")
+        new GetCollection(),
+        new Post(),
+        new Get('/pessoas_fisicas/{id}'),
+        new Patch('/pessoas_fisicas/{id}'),
+        new Delete('/pessoas_fisicas/{id}')
     ]
 )]
+#[Table(name: 'pessoa_fisica')]
 #[ORM\Entity(repositoryClass: PessoaFisicaRepository::class)]
 class PessoaFisica
 {

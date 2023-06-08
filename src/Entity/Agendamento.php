@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\AgendamentoRepository;
+use Petweb\Api\Repository\AgendamentoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
