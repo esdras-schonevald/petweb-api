@@ -20,11 +20,11 @@ Se você recebeu um convite em seu e-mail e agora faz parte da equipe de desenvo
 
 1.  Fazer uma cópia do repositório para o seu ambiente local
 
-    > _git clone https://github.com/esdras-schonevald/petweb-api.git_
+    > _git clone https://github.com/esdras-schonevald/petweb-api.git petweb/api_
 
 2.  Entrar na pasta onde foi salvo o projeto
 
-    > _cd petweb-api_
+    > _cd petweb/api_
 
 3.  Iniciar o git nesta pasta
 
@@ -48,7 +48,7 @@ Se você recebeu um convite em seu e-mail e agora faz parte da equipe de desenvo
 
 7.  Adicione este repositório aos seus locais remotos
 
-    > _git remote add origin https://github.com/esdras-schonevald/petweb.git_
+    > _git remote add origin https://github.com/esdras-schonevald/petweb-api.git_
 
 Pronto vocẽ já está com o repositório configurado. Agora siga os próximos passos a cada alteração que você for subir para o repositório:
 
@@ -66,7 +66,7 @@ Pronto vocẽ já está com o repositório configurado. Agora siga os próximos 
 
 11. Uma vez que os seus arquivos já estejam na lista do git, é possível fazer um commit (que é a realização destas alterações no seu ambiente local). Uma boa prática é escrever uma mensagem explicando de uma maneira simples as alterações feitas
 
-    > _git commit -m "descrição das alterações"_
+    > _git commit -m "<tag>: <descrição das alterações>"_
 
     **_OBS: Sempre utilize commits semânticos, do contrário seus pull requests serão rejeitados. Para entender o quê são commits semânticos acesse [este link](https://www.conventionalcommits.org/pt-br/v1.0.0/)._**
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\TransacaoRepository;
+use Petweb\Api\Repository\TransacaoRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,7 +30,7 @@ class Transacao
     private ?Conta $conta = null;
 
     #[ORM\ManyToOne(inversedBy: 'transacoes')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'tipo_transacao_id', referencedColumnName: 'id', nullable: false)]
     private ?TipoTransacao $tipoTransacao = null;
 
     #[ORM\ManyToOne]
