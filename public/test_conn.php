@@ -1,13 +1,13 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 use Doctrine\DBAL\DriverManager;
 use Symfony\Component\Dotenv\Dotenv;
 
 include dirname(__DIR__) . "/vendor/autoload.php";
 
-(new Dotenv)->load(dirname(__DIR__) . "/.env");
+(new Dotenv())->load(dirname(__DIR__) . "/.env");
 
 $conn = DriverManager::getConnection([
     "driver"    =>  $_ENV["POSTGRES_DRIVER"],
@@ -20,7 +20,7 @@ $conn = DriverManager::getConnection([
 ]);
 
 $conn->beginTransaction();
-/*
+
 $result = $conn->executeQuery(<<<SQL
     CREATE TABLE test (
         id SERIAL PRIMARY KEY,
@@ -35,12 +35,12 @@ SQL);
 $result = $conn->executeQuery(<<<SQL
     SELECT * FROM test
 SQL);
-*/
 
+/**
 $result = $conn->executeQuery(<<<SQL
     SELECT * FROM dia_semana
 SQL);
-
+/** */
 $assoc = $result->fetchAllAssociative();
 
 header("Content-Type: Application/JSON");
