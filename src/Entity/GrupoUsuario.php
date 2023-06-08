@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
@@ -9,12 +9,15 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
-use App\Repository\GrupoUsuarioRepository;
+use Petweb\Api\Repository\GrupoUsuarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ApiResource(mercure: true, routePrefix: "usuarios",
+#[ApiResource(
+    mercure: true,
+    routePrefix: "usuarios",
     operations: [
         new GetCollection("/grupos"),
         new Post("/grupos"),
@@ -24,6 +27,7 @@ use Doctrine\ORM\Mapping as ORM;
         new Delete("/grupos/{id}")
     ]
 )]
+#[Table(name: 'grupo_usuario')]
 #[ORM\Entity(repositoryClass: GrupoUsuarioRepository::class)]
 class GrupoUsuario
 {

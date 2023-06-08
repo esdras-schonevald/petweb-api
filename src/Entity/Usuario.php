@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\UsuarioRepository;
+use Petweb\Api\Repository\UsuarioRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ApiResource(mercure: true)]
@@ -16,8 +16,8 @@ class Usuario
     private ?int $id = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Pessoa $pessoa = null;
+    #[ORM\JoinColumn(name: 'pessoa_fisica_id', referencedColumnName: 'id', nullable: false)]
+    private ?PessoaFisica $pessoaFisica = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -26,25 +26,29 @@ class Usuario
     private ?string $senha = null;
 
     #[ORM\ManyToOne(inversedBy: 'usuarios')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'grupo_usuario_id', referencedColumnName: 'id', nullable: false)]
     private ?GrupoUsuario $grupoUsuario = null;
 
     #[ORM\ManyToOne(inversedBy: 'usuarios')]
+    #[ORM\JoinColumn(name: 'conta_id', referencedColumnName: 'id', nullable: false)]
     private ?Conta $conta = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imagem = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPessoa(): ?Pessoa
+    public function getPessoaFisica(): ?PessoaFisica
     {
-        return $this->pessoa;
+        return $this->pessoaFisica;
     }
 
-    public function setPessoa(Pessoa $pessoa): self
+    public function setPessoaFisica(PessoaFisica $pessoaFisica): self
     {
-        $this->pessoa = $pessoa;
+        $this->pessoaFisica = $pessoaFisica;
 
         return $this;
     }
@@ -90,9 +94,21 @@ class Usuario
         return $this->conta;
     }
 
-    public function setConta(?Conta $conta): self
+    public function setConta(Conta $conta): self
     {
         $this->conta = $conta;
+
+        return $this;
+    }
+
+    public function getImagem(): ?string
+    {
+        return $this->imagem;
+    }
+
+    public function setImagem(?string $imagem): self
+    {
+        $this->imagem = $imagem;
 
         return $this;
     }

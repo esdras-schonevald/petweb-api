@@ -1,12 +1,31 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\PessoaFisicaRepository;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use Petweb\Api\Entity\Pessoa;
+use Petweb\Api\Repository\PessoaFisicaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
-#[ApiResource(mercure: true, uriTemplate: "pessoas_fisicas")]
+#[ApiResource(
+    mercure: true,
+    uriTemplate: '/pessoas_fisicas',
+    operations: [
+        new GetCollection(),
+        new Post(),
+        new Get('/pessoas_fisicas/{id}'),
+        new Patch('/pessoas_fisicas/{id}'),
+        new Delete('/pessoas_fisicas/{id}')
+    ]
+)]
+#[Table(name: 'pessoa_fisica')]
 #[ORM\Entity(repositoryClass: PessoaFisicaRepository::class)]
 class PessoaFisica
 {
@@ -17,7 +36,7 @@ class PessoaFisica
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Pessoa $idPessoa = null;
+    private ?Pessoa $pessoa = null;
 
     #[ORM\Column(length: 11, nullable: true)]
     private ?string $cpf = null;
@@ -30,14 +49,14 @@ class PessoaFisica
         return $this->id;
     }
 
-    public function getIdPessoa(): ?Pessoa
+    public function getPessoa(): ?Pessoa
     {
-        return $this->idPessoa;
+        return $this->pessoa;
     }
 
-    public function setIdPessoa(Pessoa $idPessoa): self
+    public function setPessoa(Pessoa $pessoa): self
     {
-        $this->idPessoa = $idPessoa;
+        $this->pessoa = $pessoa;
 
         return $this;
     }

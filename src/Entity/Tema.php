@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\TemaRepository;
+use Petweb\Api\Repository\TemaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ApiResource(mercure: true)]

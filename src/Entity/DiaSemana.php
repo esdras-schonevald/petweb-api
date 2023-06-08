@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Entity;
+namespace Petweb\Api\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use App\Controller\DiaSemanaController;
-use App\Repository\DiaSemanaRepository;
+use Petweb\Api\Controller\DiaSemanaController;
+use Petweb\Api\Repository\DiaSemanaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
 
 #[ApiResource(
-    operations:[
+    operations: [
         new GetCollection(uriTemplate: "/dias/semana"),
         new Get(uriTemplate: "/dias/{id}/semana")
     ]

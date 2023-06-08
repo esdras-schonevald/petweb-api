@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ORM\Driver;
+namespace Petweb\Api\ORM\Driver;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
