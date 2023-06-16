@@ -22,7 +22,7 @@ class Conta
     #[ORM\Column(length: 255)]
     private ?string $numero = null;
 
-    #[ORM\OneToMany(mappedBy: 'conta', targetEntity: Usuario::class)]
+    #[ORM\OneToMany(mappedBy: 'conta', targetEntity: Usuario::class, cascade: ['persist', 'remove'])]
     private Collection $usuarios;
 
     #[ORM\OneToMany(mappedBy: 'conta', targetEntity: Cartao::class)]

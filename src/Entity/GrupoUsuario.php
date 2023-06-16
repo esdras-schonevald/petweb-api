@@ -39,7 +39,7 @@ class GrupoUsuario
     #[ORM\Column(length: 255)]
     private ?string $nome = null;
 
-    #[ORM\OneToMany(mappedBy: 'grupoUsuario', targetEntity: Usuario::class)]
+    #[ORM\OneToMany(mappedBy: 'grupoUsuario', targetEntity: Usuario::class, cascade:['persist', 'remove'])]
     private Collection $usuarios;
 
     public function __construct()

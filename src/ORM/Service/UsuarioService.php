@@ -102,14 +102,20 @@ class UsuarioService extends DefaultORMService
         $usuario->setImagem($user->image);
 
         $conta          =   $this->putAccountByRequest($user);
+        $conta->addUsuario($usuario);
         $pessoaFisica   =   $this->putPersonByRequest($user);
         $grupoUsuario   =   $this->getUserGroupByName($user->userGroup);
+        $grupoUsuario->addUsuario($usuario);
 
         $usuario->setConta($conta);
         $usuario->setPessoaFisica($pessoaFisica);
         $usuario->setGrupoUsuario($grupoUsuario);
 
-        $usuarioRepository->save($usuario, true);
+        //$usuarioRepository->save($usuario);
+
+        $em = $this->getEntityManager();
+        $em->persist($usuario);
+        $em->flush();
 
         return $usuario;
     }
